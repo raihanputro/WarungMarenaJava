@@ -48,7 +48,7 @@ public class DataBarang {
 
     void TabelBarang() {
         try {
-            pst = con.prepareStatement("select * from tb_barang");
+            pst = con.prepareStatement("select a.*,b.nama_kgr as kategori from tb_barang a left join tb_kategori b on a.kategoriId_brg=b.id_kgr");
             ResultSet rs = pst.executeQuery();
             table1.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException e) {
